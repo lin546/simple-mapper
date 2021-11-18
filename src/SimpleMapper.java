@@ -48,6 +48,7 @@ public class SimpleMapper {
         } else if (type == String.class) {
             field.set(object, value);
         }else {
+            //对于基本类型和String以外的类型，假定该类型有一个以String类型为参数的构造方法
             Constructor<?> constructor = type.getConstructor(new Class[]{String.class});
             field.set(object,constructor.newInstance(value));
         }
